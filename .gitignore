@@ -1,0 +1,70 @@
+# -------------------------------------------------------
+# GLOBAL
+# -------------------------------------------------------
+.DS_Store
+*.log
+*.tmp
+*.swp
+
+# -------------------------------------------------------
+# GIT / OS / EDITOR
+# -------------------------------------------------------
+.vscode/
+.idea/
+*.code-workspace
+
+# -------------------------------------------------------
+# PYTHON BACKEND
+# -------------------------------------------------------
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+dist/
+build/
+
+# Environment variables
+backend/.env
+!.env.example   # keep example env
+
+# ChromaDB / Vector DB local files
+# (Chroma creates a folder usually named `index` or `chroma`)
+backend/chroma/
+backend/chroma_db/
+backend/vectorstore/
+backend/storage/
+
+# -------------------------------------------------------
+# NODE / REACT FRONTEND
+# -------------------------------------------------------
+
+# Node modules
+frontend/node_modules/
+frontend/.parcel-cache/
+frontend/.next/
+frontend/.vite/
+
+# Build output
+frontend/dist/
+frontend/build/
+
+# Frontend environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# -------------------------------------------------------
+# MISC
+# -------------------------------------------------------
+*.sqlite3
+*.db
+*.sqlite
