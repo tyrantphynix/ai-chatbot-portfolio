@@ -23,6 +23,17 @@ app.include_router(chat.router, prefix=settings.API_V1_STR)
 def health_check():
     return {"status": "healthy"}
 
+@app.on_event("startup")
+async def startup_event():
+    # Seed knowledge base if empty
+    from app.services.vector_service import vector_service
+    try:
+        vector_service.seed_knowledge_base()
+        print("✅ Knowledge base seeded")
+    except:
+        print("⚠️ Knowledge base already exists")
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

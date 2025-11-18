@@ -1,8 +1,8 @@
 import chromadb
-# Disable ChromaDB telemetry
-os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"
 from pathlib import Path
 import os
+# Disable ChromaDB telemetry
+os.environ["CHROMA_TELEMETRY_ENABLED"] = "false"
 
 class VectorService:
     def __init__(self, data_path: str = "./chroma_data"):
@@ -53,6 +53,16 @@ class VectorService:
         """Clear all documents (for testing)"""
         self.client.delete_collection(name="knowledge_base")
         self.collection = self._get_or_create_collection()
+
+    def seed_knowledge_base(self):
+        """Load sample knowledge base on first run"""
+        from data.knowledge_base import KNOWLEDGE_BASE
+        
+        documents = [doc["text"] for doc in KNOWLEDGE_BASE]
+        metadatas = [{"source": doc["source"]} for doc in KNOWLEDGE_BASE]
+        ids = [f"doc_{i}" for i in range(len(KNOWLEDGE_BASE))]
+        
+        self.add_documents(documents, metadatas, ids)
 
 # Initialize globally
 vector_service = VectorService()

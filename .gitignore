@@ -42,6 +42,7 @@ backend/chroma/
 backend/chroma_db/
 backend/vectorstore/
 backend/storage/
+chroma_data/
 
 # -------------------------------------------------------
 # NODE / REACT FRONTEND
