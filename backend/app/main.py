@@ -9,7 +9,7 @@ app = FastAPI(title=settings.PROJECT_NAME)
 # Enable CORS (allows frontend to call backend from different domain)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://yourdomain.com"],
+    allow_origins=["http://localhost:5173", "https://yourdomain.com"],
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
