@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 
 # This defines a single message in conversation
 class MessageSchema(BaseModel):
@@ -8,8 +8,9 @@ class MessageSchema(BaseModel):
 
 # This is what the frontend SENDS to the backend
 class ChatRequestSchema(BaseModel):
-    message: str       # The user's new message
-    conversation_history: List[MessageSchema] = []  # Previous messages (optional)
+    message: str
+    conversation_history: List  # define properly as list of messages
+    mode: Optional[str] = "casual"  # default to casual
 
 # This is what the backend SENDS back to the frontend
 class ChatResponseSchema(BaseModel):
